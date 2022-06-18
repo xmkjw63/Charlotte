@@ -1,30 +1,23 @@
 # Charlotte
 Wow, such a kawaii wordpress theme
-
+![Charlotte]([https://cdn.jsdelivr.net/gh/solstice23/cdn@master/argon_new_animate.svg](https://raw.githubusercontent.com/xmkjw63/Charlotte/master/screenshot.png))
+***
+[![](https://data.jsdelivr.com/v1/package/gh/xmkjw63/Charlotte/badge)](https://www.jsdelivr.com/package/gh/xmkjw63/Charlotte)
+***
 本主题是基于Kratos主题二次开发而成的独立Wordpress二次元向主题
-***
-## TODO List
+# 特性
++ **轻盈美观** - Kratos基底,极致的阅读体验
++ **Pjax** - 支持 Pjax 无刷新加载，提高浏览体验
++ **诸多功能** - Live2d pangu.js 平滑滚动 图片放大等
++ **丰富的短代码** 内置诸多短代码 功能强大
++ **适配 Gutenberg 编辑器** - 支持使用 Gutenberg 编辑器可视化插入区块
++ **二次元化** 深度二次元向美化 支持Banner打字动画
 
-- SEO优化finish
-- 代码高亮 finish
-- 禁用加载谷歌字体finish
-- 音乐解析 finish
-- 思源宋体+微软雅黑+FontAwesome finish
-- Mathjax数学公式
-- 平滑滚动finish
-- Pjax finish
-- Ajax评论  finish
-- 设置项备份 finish
-- 音乐播放器finish
-- dplayer+aplayer finish
-- 图片放大预览 finish
-- Pangu.js 文本格式化 finish
-- （文章目录 Banner打字动画 文章脚注）
-- Banner优化 分类上端显示
-- 随机二次元图 finish
-- live2d看板娘finish
 
-## 主题特色
-***
-低延迟加载
-功能强大 阅读体验好
+# 安装
+
+在 [Release](https://github.com/xmkjw63/Charlotte/releases) 页面下载 .zip 文件，在 WordPress 后台 "主题" 页面上传并安装。
+
+# 注意
+
+Charlotte 使用 [GPL V3.0](https://github.com/xmkjw63/Charlotte/blob/master/LICENSE) 协议开源，请遵守此协议进行二次开发等
