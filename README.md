@@ -1,6 +1,6 @@
 # Charlotte
 Wow, such a kawaii wordpress theme
-![Charlotte]([https://cdn.jsdelivr.net/gh/solstice23/cdn@master/argon_new_animate.svg](https://raw.githubusercontent.com/xmkjw63/Charlotte/master/screenshot.png))
+![Charlotte](https://raw.githubusercontent.com/xmkjw63/Charlotte/master/screenshot.png)
 ***
 [![](https://data.jsdelivr.com/v1/package/gh/xmkjw63/Charlotte/badge)](https://www.jsdelivr.com/package/gh/xmkjw63/Charlotte)
 ***
