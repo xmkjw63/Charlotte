@@ -9,12 +9,10 @@ Wow, such a kawaii wordpress theme
 - 代码高亮 finish
 - 禁用加载谷歌字体finish
 - 音乐解析 finish
-- 毛玻璃
 - 思源宋体+微软雅黑+FontAwesome finish
 - Mathjax数学公式
 - 平滑滚动finish
 - Pjax finish
-- QQ评论头像
 - Ajax评论  finish
 - 设置项备份 finish
 - 音乐播放器finish
@@ -24,7 +22,7 @@ Wow, such a kawaii wordpress theme
 - （文章目录 Banner打字动画 文章脚注）
 - Banner优化 分类上端显示
 - 随机二次元图 finish
-- live2d看板娘
+- live2d看板娘finish
 
 ## 主题特色
 ***
