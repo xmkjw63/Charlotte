@@ -13,11 +13,11 @@ Wow, such a kawaii wordpress theme
 - 思源宋体+微软雅黑+FontAwesome 一半ok
 - Mathjax数学公式
 - 短代码
-- 平滑滚动
-- Pjax
+- 平滑滚动finish
+- Pjax finish
 - QQ评论头像
-- Ajax评论
-- 设置项备份
+- Ajax评论  finish
+- 设置项备份 finish
 - 音乐播放器
 - api增强加持
 - 安全增强
@@ -29,7 +29,7 @@ Wow, such a kawaii wordpress theme
 - 友情链接
 - （文章目录 Banner打字动画 文章脚注）
 - Banner优化 分类上端显示
-- 随机二次元图
+- 随机二次元图 finish
 - 置顶文章
 - 在post-meta中加入作者信息
 - 评论优化信息增加 加入OWO.js
@@ -42,5 +42,5 @@ Wow, such a kawaii wordpress theme
 
 ## 主题特色
 ***
-低延迟加载 摆脱Jquery(?)和Bootstrap   
+低延迟加载
 功能强大 阅读体验好
