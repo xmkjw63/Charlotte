@@ -1,6 +1,6 @@
 # Charlotte
 Wow, such a kawaii wordpress theme
-![Charlotte](https://raw.githubusercontent.com/xmkjw63/Charlotte/master/screenshot.png)
+![Charlotte](https://s-sh-3892-mingassets.oss.dogecdn.com/Charlotte/screenshot.png)
 ***
 [![](https://data.jsdelivr.com/v1/package/gh/xmkjw63/Charlotte/badge)](https://www.jsdelivr.com/package/gh/xmkjw63/Charlotte)
 ***
