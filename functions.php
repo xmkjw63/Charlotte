@@ -2,12 +2,13 @@
 
 /**
  * 模板函数
- * @author Seaton Jiang <hi@seatonjiang.com>
+ * @author Xmkjw63 <xmwlws@gmail.com>
  * @license GPL-3.0 License
  * @version 2022.05.02
  */
 
-define('THEME_VERSION', '4.1.4');
+define('THEME_VERSION', '0.1');
+define('Kratos_VERSION','4.1.4');
 
 // 主题配置
 require get_template_directory() . '/inc/codestar-framework/autoload.php';

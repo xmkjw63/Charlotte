@@ -2,14 +2,14 @@
 
 /**
  * 核心函数
- * @author Seaton Jiang <hi@seatonjiang.com>
+ * @author Xmkjw63 <xmwlws@gmail.com>
  * @license GPL-3.0 License
  * @version 2022.05.27
  */
 
 // CDN 资源地址
-if (kratos_option('g_cdn', false)) {
-    $asset_path = 'https://cdn.seatonjiang.com/kratos/' . THEME_VERSION;
+if (Charlotte_option('g_cdn', false)) {
+    $asset_path = 'https://cdn.seatonjiang.com/kratos/' . Kratos_VERSION;
 } else {
     $asset_path = get_template_directory_uri();
 }
@@ -20,7 +20,7 @@ function init_theme()
 {
     global $pagenow;
     if ('themes.php' == $pagenow && isset($_GET['activated'])) {
-        wp_redirect(admin_url('admin.php?page=kratos-options'));
+        wp_redirect(admin_url('admin.php?page=Charlotte-options'));
         exit;
     }
 }
@@ -29,7 +29,7 @@ add_action('load-themes.php', 'init_theme');
 // 语言国际化
 function theme_languages()
 {
-    load_theme_textdomain('kratos', get_template_directory() . '/languages');
+    load_theme_textdomain('Charlotte', get_template_directory() . '/languages');
 }
 add_action('after_setup_theme', 'theme_languages');
 
@@ -39,20 +39,20 @@ function theme_autoload()
     if (!is_admin()) {
         // css
         wp_enqueue_style('bootstrap', ASSET_PATH . '/assets/css/bootstrap.min.css', array(), '4.5.0');
-        wp_enqueue_style('kicon', ASSET_PATH . '/assets/css/iconfont.min.css', array(), THEME_VERSION);
+        wp_enqueue_style('kicon', ASSET_PATH . '/assets/css/iconfont.min.css', array(), '4.1.4');
         wp_enqueue_style('layer', ASSET_PATH . '/assets/css/layer.min.css', array(), '3.1.1');
         wp_enqueue_style('lightgallery', ASSET_PATH . '/assets/css/lightgallery.min.css', array(), '1.4.0');
-        if (kratos_option('g_animate', false)) {
+        if (Charlotte_option('g_animate', false)) {
             wp_enqueue_style('animate', ASSET_PATH . '/assets/css/animate.min.css', array(), '4.1.1');
         }
-        if (kratos_option('g_fontawesome', false)) {
+        if (Charlotte_option('g_fontawesome', false)) {
             wp_enqueue_style('fontawesome', ASSET_PATH . '/assets/css/fontawesome.min.css', array(), '5.15.2');
         }
-        wp_enqueue_style('kratos', ASSET_PATH . '/style.css', array(), THEME_VERSION);
+        wp_enqueue_style('Charlotte', ASSET_PATH . '/style.css', array(), '4.1.4');
         if (is_child_theme()) {
-            wp_enqueue_style('kratos-child', get_stylesheet_uri(), array(), wp_get_theme()->get('Version'));
+            wp_enqueue_style('Charlotte-child', get_stylesheet_uri(), array(), wp_get_theme()->get('Version'));
         }
-        if (kratos_option('g_adminbar', true)) {
+        if (Charlotte_option('g_adminbar', true)) {
             $admin_bar_css = "
             @media screen and (min-width: 782px) {
                 .k-nav {
@@ -70,21 +70,21 @@ function theme_autoload()
                 }
             }";
             if (current_user_can('level_10')) {
-                wp_add_inline_style('kratos', $admin_bar_css);
+                wp_add_inline_style('Charlotte', $admin_bar_css);
             }
         }
-        wp_add_inline_style('kratos', "
+        wp_add_inline_style('Charlotte', "
         @media screen and (min-width: 992px) {
             .k-nav .navbar-brand h1 {
-                color: " . kratos_option('g_nav', '#ffffff') . ";
+                color: " . Charlotte_option('g_nav', '#ffffff') . ";
             }
             .k-nav .navbar-nav > li.nav-item > a {
-                color: " . kratos_option('g_nav', '#ffffff') . ";
+                color: " . Charlotte_option('g_nav', '#ffffff') . ";
             }
         }
         ");
-        if (kratos_option('g_sticky', false)) {
-            wp_add_inline_style('kratos', '.sticky-sidebar {
+        if (Charlotte_option('g_sticky', false)) {
+            wp_add_inline_style('Charlotte', '.sticky-sidebar {
                 position: sticky;
                 top: 8px;
                 height: 100%;
@@ -95,40 +95,40 @@ function theme_autoload()
         wp_enqueue_script('jquery', ASSET_PATH . '/assets/js/jquery.min.js', array(), '3.4.1', false);
         wp_enqueue_script('bootstrap-bundle', ASSET_PATH . '/assets/js/bootstrap.bundle.min.js', array(), '4.5.0', true);
         wp_enqueue_script('layer', ASSET_PATH . '/assets/js/layer.min.js', array(), '3.1.1', true);
-        wp_enqueue_script('dplayer', ASSET_PATH . '/assets/js/DPlayer.min.js', array(), THEME_VERSION, true);
+        wp_enqueue_script('dplayer', ASSET_PATH . '/assets/js/DPlayer.min.js', array(), '4.1.4', true);
         wp_enqueue_script('lightgallery', ASSET_PATH . '/assets/js/lightgallery.min.js', array(), '1.4.0', true);
-        wp_enqueue_script('kratos', ASSET_PATH . '/assets/js/kratos.js', array(), THEME_VERSION, true);
+        wp_enqueue_script('Charlotte', ASSET_PATH . '/assets/js/kratos.js', array(), '4.1.4', true);
 
         $data = array(
             'site' => home_url(),
             'directory' => ASSET_PATH,
-            'alipay' => kratos_option('g_donate_fieldset')['g_donate_alipay'] ?? '',
-            'wechat' => kratos_option('g_donate_fieldset')['g_donate_wechat'] ?? '',
-            'repeat' => __('您已经赞过了', 'kratos'),
-            'thanks' => __('感谢您的支持', 'kratos'),
-            'donate' => __('打赏作者', 'kratos'),
-            'scan'   => __('扫码支付', 'kratos'),
+            'alipay' => Charlotte_option('g_donate_fieldset')['g_donate_alipay'] ?? '',
+            'wechat' => Charlotte_option('g_donate_fieldset')['g_donate_wechat'] ?? '',
+            'repeat' => __('您已经赞过了', 'Charlotte'),
+            'thanks' => __('感谢您的支持', 'Charlotte'),
+            'donate' => __('打赏作者', 'Charlotte'),
+            'scan'   => __('扫码支付', 'Charlotte'),
         );
-        wp_localize_script('kratos', 'kratos', $data);
+        wp_localize_script('Charlotte', 'Charlotte', $data);
     }
 }
 add_action('wp_enqueue_scripts', 'theme_autoload');
 
 // 后台资源加载
-function kratos_admin_enqueue()
+function Charlotte_admin_enqueue()
 {
     wp_enqueue_style('admin-custom-css', get_template_directory_uri() . '/assets/css/admin.css', array(), filemtime(get_stylesheet_directory() . '/assets/css/admin.css'));
 }
 
-add_action('admin_enqueue_scripts', 'kratos_admin_enqueue', 20);
+add_action('admin_enqueue_scripts', 'Charlotte_admin_enqueue', 20);
 
 // 前台管理员导航
-if (!kratos_option('g_adminbar', true)) {
+if (!Charlotte_option('g_adminbar', true)) {
     add_filter('show_admin_bar', '__return_false');
 }
 
 // 移除自动保存、修订版本
-if (kratos_option('g_post_revision', true)) {
+if (Charlotte_option('g_post_revision', true)) {
     remove_action('post_updated', 'wp_save_post_revision');
 }
 
@@ -201,15 +201,15 @@ add_filter('style_loader_src', function ($href) {
 });
 
 // Gravatar 加速服务
-if (kratos_option('g_replace_gravatar_url_fieldset')['g_replace_gravatar_url'] ?? true) {
+if (Charlotte_option('g_replace_gravatar_url_fieldset')['g_replace_gravatar_url'] ?? true) {
     function replace_gravatar_url($avatar)
     {
         $gravatar_server_list = array(
             'geekzu' => 'sdn.geekzu.org',
             'loli' => 'gravatar.loli.net',
-            'other' => kratos_option('g_replace_gravatar_url_fieldset')['g_custom_gravatar_server'] ?? null,
+            'other' => Charlotte_option('g_replace_gravatar_url_fieldset')['g_custom_gravatar_server'] ?? null,
         );
-        $gravatar_server = $gravatar_server_list[kratos_option('g_replace_gravatar_url_fieldset')['g_select_gravatar_server'] ?? 'geekzu'];
+        $gravatar_server = $gravatar_server_list[Charlotte_option('g_replace_gravatar_url_fieldset')['g_select_gravatar_server'] ?? 'geekzu'];
         $avatar = str_replace(array('www.gravatar.com', '0.gravatar.com', '1.gravatar.com', '2.gravatar.com', '3.gravatar.com', 'secure.gravatar.com'), $gravatar_server, $avatar);
         $avatar = str_replace('http://', 'https://', $avatar);
 
@@ -224,11 +224,11 @@ if (kratos_option('g_replace_gravatar_url_fieldset')['g_replace_gravatar_url'] ?
 $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
     'https://cdn.seatonjiang.com/kratos/update.json',
     get_template_directory() . '/functions.php',
-    'Kratos'
+    'Charlotte'
 );
 
 // 禁止生成多种尺寸图片
-if (kratos_option('g_removeimgsize', false)) {
+if (Charlotte_option('g_removeimgsize', false)) {
     function remove_default_images($sizes)
     {
         unset($sizes['thumbnail']);
@@ -257,11 +257,11 @@ function custom_upload_filter($file)
 
     $ext = '.' . $info['extension'];
 
-    $prdfix = kratos_option('g_renameother_fieldset')['g_renameother_prdfix'] . '-';
+    $prdfix = Charlotte_option('g_renameother_fieldset')['g_renameother_prdfix'] . '-';
 
     $img_mimes = array('jpg', 'JPG', 'jpeg', 'JPEG', 'gif', 'GIF', 'png', 'PNG', 'bmp', 'BMP', 'webp', 'WEBP', 'svg', 'SVG');
 
-    $str = kratos_option('g_renameother_fieldset')['g_renameother_mime'];
+    $str = Charlotte_option('g_renameother_fieldset')['g_renameother_mime'];
     $arr = explode("|", $str);
     $arr = array_filter($arr);
 
@@ -269,7 +269,7 @@ function custom_upload_filter($file)
         $compressed_mimes[] = $value;
     }
 
-    if (kratos_option('g_renameimg', false)) {
+    if (Charlotte_option('g_renameimg', false)) {
         foreach ($img_mimes as $img_mime) {
             if ($info['extension'] == $img_mime) {
                 $charid = strtolower(md5($file['name']));
@@ -280,7 +280,7 @@ function custom_upload_filter($file)
         }
     }
 
-    if (kratos_option('g_renameother_fieldset')['g_renameother']) {
+    if (Charlotte_option('g_renameother_fieldset')['g_renameother']) {
         foreach ($compressed_mimes as $compressed_mime) {
             if ($info['extension'] == $compressed_mime) {
                 $file['name'] = $prdfix . $file['name'];
@@ -292,7 +292,7 @@ function custom_upload_filter($file)
 }
 
 // 仅搜索文章标题
-if (kratos_option('g_search', false)) {
+if (Charlotte_option('g_search', false)) {
     add_filter('posts_search', 'search_enhancement', 10, 2);
 
     function search_enhancement($search, $wp_query)

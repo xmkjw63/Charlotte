@@ -2,7 +2,7 @@
 
 /**
  * 文章短代码
- * @author Seaton Jiang <hi@seatonjiang.com>
+ * @author Xmkjw63 <xmwlws@gmail.com>
  * @license GPL-3.0 License
  * @version 2022.01.26
  */
@@ -15,6 +15,14 @@ function h2title($atts, $content = null, $code = "")
     return $return;
 }
 add_shortcode('h2title', 'h2title');
+
+function code($atts, $content = null, $code = ""){
+    $return='<pre><code>';
+    $return.=$content;
+    $return.='</code></pre>';
+    return $return;
+}
+add_shortcode('code','code');
 
 function success($atts, $content = null, $code = "")
 {
@@ -56,7 +64,7 @@ function wymusic($atts, $content = null, $code = "")
 {
     $return = '<div class="mb-3"><iframe style="width:100%" frameborder="no" border="0" marginwidth="0" marginheight="0" height=86 src="//music.163.com/outchain/player?type=2&id=';
     $return .= $content;
-    $return .= '&auto=' . kratos_option('g_163mic', false) . '&height=66"></iframe></div>';
+    $return .= '&auto=' . Charlotte_option('g_163mic', false) . '&height=66"></iframe></div>';
     return $return;
 }
 add_shortcode('music', 'wymusic');
@@ -103,7 +111,7 @@ add_shortcode('striped', 'striped');
 
 function successbox($atts, $content = null, $code = "")
 {
-    extract(shortcode_atts(array("title" => __('标题内容', 'kratos')), $atts));
+    extract(shortcode_atts(array("title" => __('标题内容', 'Charlotte')), $atts));
     $return = '<div class="card border-success text-white mb-3"><div class="card-header bg-success">';
     $return .= $title;
     $return .= '</div><div class="card-body"><p class="card-text">';
@@ -115,7 +123,7 @@ add_shortcode('successbox', 'successbox');
 
 function infobox($atts, $content = null, $code = "")
 {
-    extract(shortcode_atts(array("title" => __('标题内容', 'kratos')), $atts));
+    extract(shortcode_atts(array("title" => __('标题内容', 'Charlotte')), $atts));
     $return = '<div class="card border-info text-white mb-3"><div class="card-header bg-info">';
     $return .= $title;
     $return .= '</div><div class="card-body"><p class="card-text">';
@@ -127,7 +135,7 @@ add_shortcode('infobox', 'infobox');
 
 function warningbox($atts, $content = null, $code = "")
 {
-    extract(shortcode_atts(array("title" => __('标题内容', 'kratos')), $atts));
+    extract(shortcode_atts(array("title" => __('标题内容', 'Charlotte')), $atts));
     $return = '<div class="card border-warning text-white mb-3"><div class="card-header bg-warning">';
     $return .= $title;
     $return .= '</div><div class="card-body"><p class="card-text">';
@@ -139,7 +147,7 @@ add_shortcode('warningbox', 'warningbox');
 
 function dangerbox($atts, $content = null, $code = "")
 {
-    extract(shortcode_atts(array("title" => __('标题内容', 'kratos')), $atts));
+    extract(shortcode_atts(array("title" => __('标题内容', 'Charlotte')), $atts));
     $return = '<div class="card border-danger text-white mb-3"><div class="card-header bg-danger">';
     $return .= $title;
     $return .= '</div><div class="card-body"><p class="card-text">';
@@ -178,7 +186,7 @@ add_shortcode('bilibili', 'bilibili');
 
 function reply($atts, $content = null)
 {
-    extract(shortcode_atts(array("notice" => '<div class="alert alert-primary text-center" role="alert">' . __('温馨提示：此处内容已隐藏，<a href="#comments">回复</a>后刷新页面即可查看！', 'kratos') . '</div>'), $atts));
+    extract(shortcode_atts(array("notice" => '<div class="alert alert-primary text-center" role="alert">' . __('温馨提示：此处内容已隐藏，<a href="#comments">回复</a>后刷新页面即可查看！', 'Charlotte') . '</div>'), $atts));
     $userEmail = null;
     $user_ID = (int) wp_get_current_user()->ID;
     if ($user_ID > 0) {
@@ -215,7 +223,7 @@ add_shortcode('reply', 'reply');
 
 function accordion($atts, $content = null, $code = "")
 {
-    extract(shortcode_atts(array("title" => __('标题内容', 'kratos')), $atts));
+    extract(shortcode_atts(array("title" => __('标题内容', 'Charlotte')), $atts));
     $return = '<div class="accordion"><div class="acheader"><div class="icon"><i class="kicon i-plus"></i></div><span>';
     $return .= $title;
     $return .= '</span></div><div class="contents"><div class="inner">';
@@ -344,6 +352,7 @@ add_filter("mce_buttons", "add_more_buttons");
 function register_button($buttons)
 {
     array_push($buttons, " ", "h2title");
+    array_push($buttons, " ", "code");
     array_push($buttons, " ", "kbd");
     array_push($buttons, " ", "mark");
     array_push($buttons, " ", "striped");
@@ -369,6 +378,7 @@ function register_button($buttons)
 function add_plugin($plugin_array)
 {
     $plugin_array['h2title'] = ASSET_PATH . '/assets/js/buttons/more.js';
+    $plugin_array['code'] = ASSET_PATH . '/assets/js/buttons/more.js';
     $plugin_array['kbd'] = ASSET_PATH . '/assets/js/buttons/more.js';
     $plugin_array['mark'] = ASSET_PATH . '/assets/js/buttons/more.js';
     $plugin_array['striped'] = ASSET_PATH . '/assets/js/buttons/more.js';

@@ -19,7 +19,7 @@
 
 function register_navmenus()
 {
-    register_nav_menus(array('header_menu' => __('顶部菜单', 'kratos')));
+    register_nav_menus(array('header_menu' => __('顶部菜单', 'Charlotte')));
 }
 add_action('after_setup_theme', 'register_navmenus');
 
@@ -385,7 +385,7 @@ if (!class_exists('WP_Bootstrap_Navwalker')) {
                 if ($menu_class) {
                     $fallback_output .= ' class="' . esc_attr($menu_class) . '"';}
                 $fallback_output .= '>';
-                $fallback_output .= '<li class="nav-item"><a href="' . esc_url(admin_url('nav-menus.php')) . '" class="nav-link">' . esc_attr__('添加导航', 'kratos') . '</a></li>';
+                $fallback_output .= '<li class="nav-item"><a href="' . esc_url(admin_url('nav-menus.php')) . '" class="nav-link">' . esc_attr__('添加导航', 'Charlotte') . '</a></li>';
                 $fallback_output .= '</ul>';
                 if ($container) {
                     $fallback_output .= '</' . esc_attr($container) . '>';

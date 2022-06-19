@@ -2,7 +2,7 @@
 
 /**
  * 表情图标
- * @author Seaton Jiang <hi@seatonjiang.com>
+ * @author Xmkjw63 <xmwlws@gmail.com>
  * @license GPL-3.0 License
  * @version 2022.01.26
  */

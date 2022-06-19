@@ -2,14 +2,14 @@
 
 /**
  * 页面模板
- * @author Seaton Jiang <hi@seatonjiang.com>
+ * @author Xmkjw63 <xmwlws@gmail.com>
  * @license GPL-3.0 License
  * @version 2022.01.26
  */
 
 get_header(); ?>
-<div class="k-main <?php echo kratos_option('top_img_switch', true) ? 'banner' : 'color' ?>" style="background:<?php echo kratos_option('g_background', '#f5f5f5'); ?>">
-    <div class="container">
+<div class="k-main <?php echo Charlotte_option('top_img_switch', true) ? 'banner' : 'color' ?>" style="background:<?php echo Charlotte_option('g_background', '#f5f5f5'); ?>">
+    <div class="container mainpjax">
         <div class="row">
             <div class="col-lg-8 details">
                 <?php if (have_posts()) : the_post();
@@ -26,7 +26,7 @@ get_header(); ?>
                                     'before' => '<div class="paginations text-center">',
                                     'after' => '',
                                     'next_or_number' => 'next',
-                                    'previouspagelink' => __('<span>上一页</span>', 'kratos'),
+                                    'previouspagelink' => __('<span>上一页</span>', 'Charlotte'),
                                     'nextpagelink' => ''
                                 )
                             );
@@ -45,7 +45,7 @@ get_header(); ?>
                                     'after' => '</div>',
                                     'next_or_number' => 'next',
                                     'previouspagelink' => '',
-                                    'nextpagelink' => __('<span>下一页</span>', 'kratos')
+                                    'nextpagelink' => __('<span>下一页</span>', 'Charlotte')
                                 )
                             ); ?>
                         </div>

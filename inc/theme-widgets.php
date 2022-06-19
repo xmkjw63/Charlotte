@@ -2,7 +2,7 @@
 
 /**
  * 侧栏小工具
- * @author Seaton Jiang <hi@seatonjiang.com>
+ * @author Xmkjw63 <xmwlws@gmail.com>
  * @license GPL-3.0 License
  * @version 2022.04.29
  */
@@ -11,7 +11,7 @@
 function widgets_init()
 {
     register_sidebar(array(
-        'name' => __('主页侧边栏', 'kratos'),
+        'name' => __('主页侧边栏', 'Charlotte'),
         'id' => 'home_sidebar',
         'before_widget' => '<div class="widget %2$s">',
         'after_widget' => '</div>',
@@ -19,7 +19,7 @@ function widgets_init()
         'after_title' => '</div>',
     ));
     register_sidebar(array(
-        'name' => __('文章侧边栏', 'kratos'),
+        'name' => __('文章侧边栏', 'Charlotte'),
         'id' => 'single_sidebar',
         'before_widget' => '<div class="widget %2$s">',
         'after_widget' => '</div>',
@@ -27,7 +27,7 @@ function widgets_init()
         'after_title' => '</div>',
     ));
     register_sidebar(array(
-        'name' => __('页面侧边栏', 'kratos'),
+        'name' => __('页面侧边栏', 'Charlotte'),
         'id' => 'page_sidebar',
         'before_widget' => '<div class="widget %2$s">',
         'after_widget' => '</div>',
@@ -59,7 +59,7 @@ add_action('widgets_init', 'widgets_init');
 function cat_count_span($links)
 {
     $links = str_replace('</a> (', '<span> / ', $links);
-    $links = str_replace(')', __('篇', 'kratos') . '</span></a>', $links);
+    $links = str_replace(')', __('篇', 'Charlotte') . '</span></a>', $links);
     return $links;
 }
 add_filter('wp_list_categories', 'cat_count_span');
@@ -68,7 +68,7 @@ add_filter('wp_list_categories', 'cat_count_span');
 function archive_count_span($links)
 {
     $links = str_replace('</a>&nbsp;(', '<span> / ', $links);
-    $links = str_replace(')', __('篇', 'kratos') . '</span></a>', $links);
+    $links = str_replace(')', __('篇', 'Charlotte') . '</span></a>', $links);
     return $links;
 }
 add_filter('get_archives_link', 'archive_count_span');
@@ -102,15 +102,15 @@ function timeago($time)
 {
     $time = strtotime($time);
     $dtime = time() - $time;
-    if ($dtime < 1) return __('刚刚', 'kratos');
+    if ($dtime < 1) return __('刚刚', 'Charlotte');
     $intervals = [
-        12 * 30 * 24 * 60 * 60 => __(' 年前', 'kratos'),
-        30 * 24 * 60 * 60 => __(' 个月前', 'kratos'),
-        7  * 24 * 60 * 60 => __(' 周前', 'kratos'),
-        24 * 60 * 60 => __(' 天前', 'kratos'),
-        60 * 60 => __(' 小时前', 'kratos'),
-        60 => __(' 分钟前', 'kratos'),
-        1 => __(' 秒前', 'kratos')
+        12 * 30 * 24 * 60 * 60 => __(' 年前', 'Charlotte'),
+        30 * 24 * 60 * 60 => __(' 个月前', 'Charlotte'),
+        7  * 24 * 60 * 60 => __(' 周前', 'Charlotte'),
+        24 * 60 * 60 => __(' 天前', 'Charlotte'),
+        60 * 60 => __(' 小时前', 'Charlotte'),
+        60 => __(' 分钟前', 'Charlotte'),
+        1 => __(' 秒前', 'Charlotte')
     ];
     foreach ($intervals as $sec => $str) {
         $v = $dtime / $sec;
@@ -146,12 +146,12 @@ function latest_comments($list_number = 5, $cut_length = 50)
     global $wpdb, $output;
     $comments = $wpdb->get_results($wpdb->prepare("SELECT comment_ID, comment_post_ID, comment_author, comment_author_email, comment_date, comment_content FROM {$wpdb->comments} LEFT OUTER JOIN {$wpdb->posts} ON {$wpdb->comments}.comment_post_ID = {$wpdb->posts}.ID WHERE comment_approved = '1' AND (comment_type = '' OR comment_type = 'comment') AND user_id != '1' AND post_password = '' ORDER BY comment_date_gmt DESC LIMIT %d", $list_number));
     foreach ($comments as $comment) {
-        $nickname = esc_attr($comment->comment_author) ?: __('匿名', 'kratos');
+        $nickname = esc_attr($comment->comment_author) ?: __('匿名', 'Charlotte');
         $output .= '<a href="' . get_the_permalink($comment->comment_post_ID) . '#commentform">
             <div class="meta clearfix">
                 <div class="avatar float-left">' . get_avatar($comment, 60) . '</div>
                 <div class="profile d-block">
-                    <span class="date">' . $nickname . ' ' . __('发布于 ', 'kratos') . timeago($comment->comment_date) . '（' . wp_date(__('m月d日', 'kratos'), strtotime($comment->comment_date)) . '）</span>
+                    <span class="date">' . $nickname . ' ' . __('发布于 ', 'Charlotte') . timeago($comment->comment_date) . '（' . wp_date(__('m月d日', 'Charlotte'), strtotime($comment->comment_date)) . '）</span>
                     <span class="message d-block">' . convert_smilies(esc_attr(string_cut(strip_tags($comment->comment_content), $cut_length))) . '</span>
                 </div>
             </div>
@@ -182,7 +182,7 @@ class widget_search extends WP_Widget
         if ($title) {
             echo '<div class="title">' . $title . '</div>';
         }
-        echo '<div class="item"> <form role="search" method="get" id="searchform" class="searchform" action="' . home_url('/') . '"> <div class="input-group mt-2 mb-2"> <input type="text" name="s" id="search-widgets" class="form-control" placeholder="' . __('搜点什么呢?', 'kratos') . '"> <div class="input-group-append"> <button class="btn btn-primary btn-search" type="submit" id="searchsubmit">' . __('搜索', 'kratos') . '</button> </div> </div> </form>';
+        echo '<div class="item"> <form role="search" method="get" id="searchform" class="searchform" action="' . home_url('/') . '"> <div class="input-group mt-2 mb-2"> <input type="text" name="s" id="search-widgets" class="form-control" placeholder="' . __('搜点什么呢?', 'Charlotte') . '"> <div class="input-group-append"> <button class="btn btn-primary btn-search" type="submit" id="searchsubmit">' . __('搜索', 'Charlotte') . '</button> </div> </div> </form>';
         echo '</div></div>';
     }
 
@@ -211,8 +211,8 @@ class widget_ad extends WP_Widget
         add_action('admin_enqueue_scripts', array($this, 'scripts'));
 
         $widget_ops = array(
-            'name' => __('图片广告', 'kratos'),
-            'description' => __('显示自定义图片广告的工具', 'kratos'),
+            'name' => __('图片广告', 'Charlotte'),
+            'description' => __('显示自定义图片广告的工具', 'Charlotte'),
         );
 
         parent::__construct(false, false, $widget_ops);
@@ -228,7 +228,7 @@ class widget_ad extends WP_Widget
 
     public function widget($args, $instance)
     {
-        $subtitle = !empty($instance['subtitle']) ? $instance['subtitle'] : __('广告', 'kratos');
+        $subtitle = !empty($instance['subtitle']) ? $instance['subtitle'] : __('广告', 'Charlotte');
         $image = !empty($instance['image']) ? $instance['image'] : '';
         $url = !empty($instance['url']) ? $instance['url'] : '';
 
@@ -250,23 +250,23 @@ class widget_ad extends WP_Widget
 
     public function form($instance)
     {
-        $subtitle = !empty($instance['subtitle']) ? $instance['subtitle'] : __('广告', 'kratos');
+        $subtitle = !empty($instance['subtitle']) ? $instance['subtitle'] : __('广告', 'Charlotte');
         $image = !empty($instance['image']) ? $instance['image'] : '';
         $url = !empty($instance['url']) ? $instance['url'] : '';
     ?>
         <div class="media-widget-control">
             <p>
-                <label for="<?php echo $this->get_field_id('subtitle'); ?>"><?php _e('副标题：', 'kratos'); ?></label>
+                <label for="<?php echo $this->get_field_id('subtitle'); ?>"><?php _e('副标题：', 'Charlotte'); ?></label>
                 <input class="widefat" id="<?php echo $this->get_field_id('subtitle'); ?>" name="<?php echo $this->get_field_name('subtitle'); ?>" type="text" value="<?php echo esc_attr($subtitle); ?>">
             </p>
             <p>
-                <label for="<?php echo $this->get_field_id('url'); ?>"><?php _e('链接地址：', 'kratos'); ?></label>
+                <label for="<?php echo $this->get_field_id('url'); ?>"><?php _e('链接地址：', 'Charlotte'); ?></label>
                 <input class="widefat" id="<?php echo $this->get_field_id('url'); ?>" name="<?php echo $this->get_field_name('url'); ?>" type="text" value="<?php echo esc_attr($url); ?>">
             </p>
             <p>
-                <label for="<?php echo $this->get_field_id('image'); ?>"><?php _e('广告图片:', 'kratos'); ?></label>
+                <label for="<?php echo $this->get_field_id('image'); ?>"><?php _e('广告图片:', 'Charlotte'); ?></label>
                 <input class="widefat" id="<?php echo $this->get_field_id('image'); ?>" name="<?php echo $this->get_field_name('image'); ?>" type="text" value="<?php echo esc_url($image); ?>" />
-                <button type="button" class="button-update-media upload_ad"><?php _e('选择图片', 'kratos'); ?></button>
+                <button type="button" class="button-update-media upload_ad"><?php _e('选择图片', 'Charlotte'); ?></button>
             </p>
         </div>
     <?php
@@ -280,8 +280,8 @@ class widget_about extends WP_Widget
         add_action('admin_enqueue_scripts', array($this, 'scripts'));
 
         $widget_ops = array(
-            'name' => __('个人简介', 'kratos'),
-            'description' => __('站长个人简介的展示工具', 'kratos'),
+            'name' => __('个人简介', 'Charlotte'),
+            'description' => __('站长个人简介的展示工具', 'Charlotte'),
         );
 
         parent::__construct(false, false, $widget_ops);
@@ -297,14 +297,14 @@ class widget_about extends WP_Widget
 
     public function widget($args, $instance)
     {
-        $introduce = !empty(get_the_author_meta('description', '1')) ? get_the_author_meta('description', '1') : __('这个人很懒，什么都没留下', 'kratos');
+        $introduce = !empty(get_the_author_meta('description', '1')) ? get_the_author_meta('description', '1') : __('这个人很懒，什么都没留下', 'Charlotte');
         $username = get_the_author_meta('display_name', '1');
         $avatar = get_avatar_url('1', ['size' => '300']);
         $background = !empty($instance['background']) ? $instance['background'] : ASSET_PATH . '/assets/img/about-background.png';
 
         echo '<div class="widget w-about">';
         echo '<div class="background" style="background:url(' . $background . ') no-repeat center center;-webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;"></div><div class="wrapper text-center">';
-        if (kratos_option('g_login', true)) {
+        if (Charlotte_option('g_login', true)) {
             if (current_user_can('manage_options')) {
                 echo '<a href="' . admin_url() . '">';
             } else {
@@ -312,7 +312,7 @@ class widget_about extends WP_Widget
             }
         }
         echo '<img src="' . $avatar . '">';
-        if (kratos_option('g_login', true)) {
+        if (Charlotte_option('g_login', true)) {
             echo '</a>';
         }
         $introduce = str_replace("\n", '<br>', $introduce);
@@ -335,9 +335,9 @@ class widget_about extends WP_Widget
     ?>
         <div class="media-widget-control">
             <p>
-                <label for="<?php echo $this->get_field_id('background'); ?>"><?php _e('背景图片:', 'kratos'); ?></label>
+                <label for="<?php echo $this->get_field_id('background'); ?>"><?php _e('背景图片:', 'Charlotte'); ?></label>
                 <input class="widefat" id="<?php echo $this->get_field_id('background'); ?>" name="<?php echo $this->get_field_name('background'); ?>" type="text" value="<?php echo esc_attr($background); ?>">
-                <button type="button" class="button-update-media upload_background"><?php _e('选择图片', 'kratos'); ?></button>
+                <button type="button" class="button-update-media upload_background"><?php _e('选择图片', 'Charlotte'); ?></button>
             </p>
         </div>
     <?php
@@ -349,8 +349,8 @@ class widget_tags extends WP_Widget
     public function __construct()
     {
         $widget_ops = array(
-            'name' => __('标签聚合', 'kratos'),
-            'description' => __('文章标签的展示工具', 'kratos'),
+            'name' => __('标签聚合', 'Charlotte'),
+            'description' => __('文章标签的展示工具', 'Charlotte'),
         );
 
         parent::__construct(false, false, $widget_ops);
@@ -373,7 +373,7 @@ class widget_tags extends WP_Widget
             )
         );
         echo '<div class="widget w-tags">';
-        echo '<div class="title">' . __('标签聚合', 'kratos') . '</div>';
+        echo '<div class="title">' . __('标签聚合', 'Charlotte') . '</div>';
         echo '<div class="item">' . $tags . '</div>';
         echo '</div>';
     }
@@ -396,15 +396,15 @@ class widget_tags extends WP_Widget
     ?>
         <div class="media-widget-control">
             <p>
-                <label for="<?php echo $this->get_field_id('number'); ?>"><?php _e('显示数量：', 'kratos'); ?></label>
+                <label for="<?php echo $this->get_field_id('number'); ?>"><?php _e('显示数量：', 'Charlotte'); ?></label>
                 <input class="widefat" id="<?php echo $this->get_field_id('number'); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="text" value="<?php echo esc_attr($number); ?>" />
             </p>
             <p>
-                <label for="<?php echo $this->get_field_id('order'); ?>"><?php _e('显示排序：', 'kratos'); ?></label>
+                <label for="<?php echo $this->get_field_id('order'); ?>"><?php _e('显示排序：', 'Charlotte'); ?></label>
                 <select name="<?php echo $this->get_field_name("order"); ?>" id='<?php echo $this->get_field_id("order"); ?>'>
-                    <option value="DESC" <?php echo ($order == 'DESC') ? 'selected' : ''; ?>><?php _e('降序', 'kratos'); ?></option>
-                    <option value="ASC" <?php echo ($order == 'ASC') ? 'selected' : ''; ?>><?php _e('升序', 'kratos'); ?></option>
-                    <option value="RAND" <?php echo ($order == 'RAND') ? 'selected' : ''; ?>><?php _e('随机', 'kratos'); ?></option>
+                    <option value="DESC" <?php echo ($order == 'DESC') ? 'selected' : ''; ?>><?php _e('降序', 'Charlotte'); ?></option>
+                    <option value="ASC" <?php echo ($order == 'ASC') ? 'selected' : ''; ?>><?php _e('升序', 'Charlotte'); ?></option>
+                    <option value="RAND" <?php echo ($order == 'RAND') ? 'selected' : ''; ?>><?php _e('随机', 'Charlotte'); ?></option>
                 </select>
             </p>
         </div>
@@ -417,8 +417,8 @@ class widget_posts extends WP_Widget
     public function __construct()
     {
         $widget_ops = array(
-            'name' => __('文章聚合', 'kratos'),
-            'description' => __('展示最热、随机、最新文章的工具', 'kratos'),
+            'name' => __('文章聚合', 'Charlotte'),
+            'description' => __('展示最热、随机、最新文章的工具', 'Charlotte'),
         );
 
         parent::__construct(false, false, $widget_ops);
@@ -433,14 +433,14 @@ class widget_posts extends WP_Widget
         echo '<div class="widget w-recommended">';
     ?>
         <div class="nav nav-tabs d-none d-xl-flex" id="nav-tab" role="tablist">
-            <a class="nav-item nav-link <?php echo $active = ($order == 'new') ? 'active' : null; ?>" id="nav-new-tab" data-toggle="tab" href="#nav-new" role="tab" aria-controls="nav-new" aria-selected="<?php echo $selected = ($order == 'new') ? 'true' : 'false'; ?>"><i class="kicon i-tabnew"></i><?php _e('最新', 'kratos'); ?></a>
-            <a class="nav-item nav-link <?php echo $active = ($order == 'hot') ? 'active' : null; ?>" id="nav-hot-tab" data-toggle="tab" href="#nav-hot" role="tab" aria-controls="nav-hot" aria-selected="<?php echo $selected = ($order == 'hot') ? 'true' : 'false'; ?>"><i class="kicon i-tabhot"></i><?php _e('热点', 'kratos'); ?></a>
-            <a class="nav-item nav-link <?php echo $active = ($order == 'random') ? 'active' : null; ?>" id="nav-random-tab" data-toggle="tab" href="#nav-random" role="tab" aria-controls="nav-random" aria-selected="<?php echo $selected = ($order == 'random') ? 'true' : 'false'; ?>"><i class="kicon i-tabrandom"></i><?php _e('随机', 'kratos'); ?></a>
+            <a class="nav-item nav-link <?php echo $active = ($order == 'new') ? 'active' : null; ?>" id="nav-new-tab" data-toggle="tab" href="#nav-new" role="tab" aria-controls="nav-new" aria-selected="<?php echo $selected = ($order == 'new') ? 'true' : 'false'; ?>"><i class="kicon i-tabnew"></i><?php _e('最新', 'Charlotte'); ?></a>
+            <a class="nav-item nav-link <?php echo $active = ($order == 'hot') ? 'active' : null; ?>" id="nav-hot-tab" data-toggle="tab" href="#nav-hot" role="tab" aria-controls="nav-hot" aria-selected="<?php echo $selected = ($order == 'hot') ? 'true' : 'false'; ?>"><i class="kicon i-tabhot"></i><?php _e('热点', 'Charlotte'); ?></a>
+            <a class="nav-item nav-link <?php echo $active = ($order == 'random') ? 'active' : null; ?>" id="nav-random-tab" data-toggle="tab" href="#nav-random" role="tab" aria-controls="nav-random" aria-selected="<?php echo $selected = ($order == 'random') ? 'true' : 'false'; ?>"><i class="kicon i-tabrandom"></i><?php _e('随机', 'Charlotte'); ?></a>
         </div>
         <div class="nav nav-tabs d-xl-none" id="nav-tab" role="tablist">
-            <a class="nav-item nav-link <?php echo $active = ($order == 'new') ? 'active' : null; ?>" id="nav-new-tab" data-toggle="tab" href="#nav-new" role="tab" aria-controls="nav-new" aria-selected="<?php echo $selected = ($order == 'new') ? 'true' : 'false'; ?>"><?php _e('最新', 'kratos'); ?></a>
-            <a class="nav-item nav-link <?php echo $active = ($order == 'hot') ? 'active' : null; ?>" id="nav-hot-tab" data-toggle="tab" href="#nav-hot" role="tab" aria-controls="nav-hot" aria-selected="<?php echo $selected = ($order == 'hot') ? 'true' : 'false'; ?>"><?php _e('热点', 'kratos'); ?></a>
-            <a class="nav-item nav-link <?php echo $active = ($order == 'random') ? 'active' : null; ?>" id="nav-random-tab" data-toggle="tab" href="#nav-random" role="tab" aria-controls="nav-random" aria-selected="<?php echo $selected = ($order == 'random') ? 'true' : 'false'; ?>"><?php _e('随机', 'kratos'); ?></a>
+            <a class="nav-item nav-link <?php echo $active = ($order == 'new') ? 'active' : null; ?>" id="nav-new-tab" data-toggle="tab" href="#nav-new" role="tab" aria-controls="nav-new" aria-selected="<?php echo $selected = ($order == 'new') ? 'true' : 'false'; ?>"><?php _e('最新', 'Charlotte'); ?></a>
+            <a class="nav-item nav-link <?php echo $active = ($order == 'hot') ? 'active' : null; ?>" id="nav-hot-tab" data-toggle="tab" href="#nav-hot" role="tab" aria-controls="nav-hot" aria-selected="<?php echo $selected = ($order == 'hot') ? 'true' : 'false'; ?>"><?php _e('热点', 'Charlotte'); ?></a>
+            <a class="nav-item nav-link <?php echo $active = ($order == 'random') ? 'active' : null; ?>" id="nav-random-tab" data-toggle="tab" href="#nav-random" role="tab" aria-controls="nav-random" aria-selected="<?php echo $selected = ($order == 'random') ? 'true' : 'false'; ?>"><?php _e('随机', 'Charlotte'); ?></a>
         </div>
         <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade <?php echo $active = ($order == 'new') ? 'show active' : null; ?>" id="nav-new" role="tabpanel" aria-labelledby="nav-new-tab">
@@ -483,19 +483,19 @@ class widget_posts extends WP_Widget
     ?>
         <div class="media-widget-control">
             <p>
-                <label for="<?php echo $this->get_field_id('number'); ?>"><?php _e('展示数量：', 'kratos'); ?></label>
+                <label for="<?php echo $this->get_field_id('number'); ?>"><?php _e('展示数量：', 'Charlotte'); ?></label>
                 <input class="widefat" id="<?php echo $this->get_field_id('number'); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="text" value="<?php echo esc_attr($number); ?>" />
             </p>
             <p>
-                <label for="<?php echo $this->get_field_id('days'); ?>"><?php _e('统计天数：', 'kratos'); ?></label>
+                <label for="<?php echo $this->get_field_id('days'); ?>"><?php _e('统计天数：', 'Charlotte'); ?></label>
                 <input class="widefat" id="<?php echo $this->get_field_id('days'); ?>" name="<?php echo $this->get_field_name('days'); ?>" type="text" value="<?php echo esc_attr($days); ?>" />
             </p>
             <p>
-                <label for="<?php echo $this->get_field_id('order'); ?>"><?php _e('默认显示：', 'kratos'); ?></label>
+                <label for="<?php echo $this->get_field_id('order'); ?>"><?php _e('默认显示：', 'Charlotte'); ?></label>
                 <select name="<?php echo $this->get_field_name("order"); ?>" id='<?php echo $this->get_field_id("order"); ?>'>
-                    <option value="new" <?php echo ($order == 'new') ? 'selected' : ''; ?>><?php _e('最新', 'kratos'); ?></option>
-                    <option value="hot" <?php echo ($order == 'hot') ? 'selected' : ''; ?>><?php _e('热点', 'kratos'); ?></option>
-                    <option value="random" <?php echo ($order == 'random') ? 'selected' : ''; ?>><?php _e('随机', 'kratos'); ?></option>
+                    <option value="new" <?php echo ($order == 'new') ? 'selected' : ''; ?>><?php _e('最新', 'Charlotte'); ?></option>
+                    <option value="hot" <?php echo ($order == 'hot') ? 'selected' : ''; ?>><?php _e('热点', 'Charlotte'); ?></option>
+                    <option value="random" <?php echo ($order == 'random') ? 'selected' : ''; ?>><?php _e('随机', 'Charlotte'); ?></option>
                 </select>
             </p>
         </div>
@@ -508,8 +508,8 @@ class widget_comments extends WP_Widget
     public function __construct()
     {
         $widget_ops = array(
-            'name' => __('最近评论', 'kratos'),
-            'description' => __('展示站点最近的评论', 'kratos'),
+            'name' => __('最近评论', 'Charlotte'),
+            'description' => __('展示站点最近的评论', 'Charlotte'),
         );
 
         parent::__construct(false, false, $widget_ops);
@@ -518,7 +518,7 @@ class widget_comments extends WP_Widget
     public function widget($args, $instance)
     {
         $number = !empty($instance['number']) ? $instance['number'] : '5';
-        $title = !empty($instance['title']) ? $instance['title'] : __('最近评论', 'kratos');
+        $title = !empty($instance['title']) ? $instance['title'] : __('最近评论', 'Charlotte');
 
         echo '<div class="widget w-comments"><div class="title">' . $title . '</div><div class="comments">';
         echo latest_comments($number, 50);
@@ -538,15 +538,15 @@ class widget_comments extends WP_Widget
     {
         global $wpdb;
         $number = !empty($instance['number']) ? $instance['number'] : '5';
-        $title = !empty($instance['title']) ? $instance['title'] : __('最近评论', 'kratos');
+        $title = !empty($instance['title']) ? $instance['title'] : __('最近评论', 'Charlotte');
     ?>
         <div class="media-widget-control">
             <p>
-                <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('栏目标题：', 'kratos'); ?></label>
+                <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('栏目标题：', 'Charlotte'); ?></label>
                 <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" />
             </p>
             <p>
-                <label for="<?php echo $this->get_field_id('number'); ?>"><?php _e('展示数量：', 'kratos'); ?></label>
+                <label for="<?php echo $this->get_field_id('number'); ?>"><?php _e('展示数量：', 'Charlotte'); ?></label>
                 <input class="widefat" id="<?php echo $this->get_field_id('number'); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="text" value="<?php echo esc_attr($number); ?>" />
             </p>
         </div>
@@ -561,8 +561,8 @@ class widget_toc extends WP_Widget
         add_action('admin_enqueue_scripts', array($this, 'scripts'));
 
         $widget_ops = array(
-            'name' => __('文章目录', 'kratos'),
-            'description' => __('仅在有目录规则的文章中显示目录的工具', 'kratos'),
+            'name' => __('文章目录', 'Charlotte'),
+            'description' => __('仅在有目录规则的文章中显示目录的工具', 'Charlotte'),
         );
 
         parent::__construct(false, false, $widget_ops);

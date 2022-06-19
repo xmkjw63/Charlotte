@@ -2,7 +2,7 @@
 
 /**
  * 文章相关函数
- * @author Seaton Jiang <hi@seatonjiang.com>
+ * @author Xmkjw63 <xmwlws@gmail.com>
  * @license GPL-3.0 License
  * @version 2022.05.01
  */
@@ -95,7 +95,7 @@ function get_post_views($echo = 1)
 // 文章列表简介内容
 function custom_excerpt_length($length)
 {
-    return kratos_option('g_excerpt_length', '260');
+    return Charlotte_option('g_excerpt_length', '260');
 }
 add_filter('excerpt_length', 'custom_excerpt_length');
 
@@ -103,7 +103,7 @@ add_filter('excerpt_length', 'custom_excerpt_length');
 add_theme_support("post-thumbnails");
 
 // 生成适合特色图的比例图片
-add_image_size('kratos-thumbnail', 512, 288, true);
+add_image_size('Charlotte-thumbnail', 512, 288, true);
 
 // 强制图片链接到媒体文件
 add_action('after_setup_theme', 'default_attachment_display_settings');
@@ -117,7 +117,7 @@ function post_thumbnail()
 {
     global $post;
     $img_id = get_post_thumbnail_id();
-    $img_url = wp_get_attachment_image_src($img_id, 'kratos-thumbnail');
+    $img_url = wp_get_attachment_image_src($img_id, 'Charlotte-thumbnail');
     if (is_array($img_url)) {
         $img_url = $img_url[0];
     }
@@ -134,7 +134,7 @@ function post_thumbnail()
         if (!empty($img_val)) {
             echo '<img src="' . $img_val . '" />';
         } else {
-            echo '<img src="' . kratos_option('g_postthumbnail', ASSET_PATH . '/assets/img/default.jpg') . '" />';
+            echo '<img src="' . Charlotte_option('g_postthumbnail', ASSET_PATH . '/assets/img/default.jpg') . '" />';
         }
     }
 }
@@ -215,8 +215,8 @@ function comment_scripts()
     wp_localize_script('comment', 'ajaxcomment', array(
         'ajax_url' => admin_url('admin-ajax.php'),
         'order' => get_option('comment_order'),
-        'compost' => __('评论正在提交中', 'kratos'),
-        'comsucc' => __('评论提交成功', 'kratos'),
+        'compost' => __('评论正在提交中', 'Charlotte'),
+        'comsucc' => __('评论提交成功', 'Charlotte'),
     ));
 }
 add_action('wp_enqueue_scripts', 'comment_scripts');
@@ -258,7 +258,7 @@ function comment_callback()
             <div class="meta clearfix">
                 <div class="date d-inline-block float-left"><?php echo get_comment_date(); ?><?php if (current_user_can('edit_posts')) {
                                                                                                     echo '<span class="ml-2">';
-                                                                                                    edit_comment_link(__('编辑', 'kratos'));
+                                                                                                    edit_comment_link(__('编辑', 'Charlotte'));
                                                                                                     echo '</span>';
                                                                                                 }; ?>
                 </div>
@@ -303,13 +303,13 @@ function comment_callbacks($comment, $args, $depth = 2)
             <div class="meta clearfix">
                 <div class="date d-inline-block float-left"><?php echo get_comment_date(); ?><?php if (current_user_can('edit_posts')) {
                                                                                                     echo '<span class="ml-2">';
-                                                                                                    edit_comment_link(__('编辑', 'kratos'));
+                                                                                                    edit_comment_link(__('编辑', 'Charlotte'));
                                                                                                     echo '</span>';
                                                                                                 }; ?>
                 </div>
                 <div class="tool reply ml-2 d-inline-block float-right">
                     <?php
-                    $defaults = array('add_below' => 'comment', 'respond_id' => 'respond', 'reply_text' => '<i class="kicon i-reply"></i><span class="ml-1">' . __('回复', 'kratos') . '</span>');
+                    $defaults = array('add_below' => 'comment', 'respond_id' => 'respond', 'reply_text' => '<i class="kicon i-reply"></i><span class="ml-1">' . __('回复', 'Charlotte') . '</span>');
                     comment_reply_link(array_merge($defaults, array('depth' => $depth, 'max_depth' => $args['max_depth'])));
                     ?>
                 </div>
@@ -366,7 +366,7 @@ smilies_reset();
 
 function smilies_custom_button()
 {
-    printf('<style> .smilies-wrap { background: #fff !important; border: 1px solid #ccc !important; box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.24) !important; padding: 10px !important; position: absolute !important; top: 60px !important; width: 400px !important; display: none !important; } .smilies-wrap img { height: 24px !important; width: 24px !important; cursor: pointer !important; margin-bottom: 5px !important; } .is-active.smilies-wrap { display: block !important; } @media screen and (max-width: 782px) { #wp-content-media-buttons a { font-size: 14px !important; padding: 0 14px !important; } } </style><a id="insert-media-button" style="position:relative" class="button insert-smilies add_smilies" data-editor="content" href="javascript:;"><span class="dashicons dashicons-smiley" style="line-height: 26px;"></span>' . __('添加表情', 'kratos') . '</a> <div class="smilies-wrap">' . get_wpsmiliestrans() . '</div> <script>jQuery(document).ready(function () { jQuery(document).on("click", ".insert-smilies", function () { if (jQuery(".smilies-wrap").hasClass("is-active")) { jQuery(".smilies-wrap").removeClass("is-active"); } else { jQuery(".smilies-wrap").addClass("is-active"); } }); jQuery(document).on("click", ".add-smily", function () { send_to_editor(" " + jQuery(this).data("smilies") + " "); jQuery(".smilies-wrap").removeClass("is-active"); return false; }); });</script>');
+    printf('<style> .smilies-wrap { background: #fff !important; border: 1px solid #ccc !important; box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.24) !important; padding: 10px !important; position: absolute !important; top: 60px !important; width: 400px !important; display: none !important; } .smilies-wrap img { height: 24px !important; width: 24px !important; cursor: pointer !important; margin-bottom: 5px !important; } .is-active.smilies-wrap { display: block !important; } @media screen and (max-width: 782px) { #wp-content-media-buttons a { font-size: 14px !important; padding: 0 14px !important; } } </style><a id="insert-media-button" style="position:relative" class="button insert-smilies add_smilies" data-editor="content" href="javascript:;"><span class="dashicons dashicons-smiley" style="line-height: 26px;"></span>' . __('添加表情', 'Charlotte') . '</a> <div class="smilies-wrap">' . get_wpsmiliestrans() . '</div> <script>jQuery(document).ready(function () { jQuery(document).on("click", ".insert-smilies", function () { if (jQuery(".smilies-wrap").hasClass("is-active")) { jQuery(".smilies-wrap").removeClass("is-active"); } else { jQuery(".smilies-wrap").addClass("is-active"); } }); jQuery(document).on("click", ".add-smily", function () { send_to_editor(" " + jQuery(this).data("smilies") + " "); jQuery(".smilies-wrap").removeClass("is-active"); return false; }); });</script>');
 }
 add_action('media_buttons', 'smilies_custom_button');
 
@@ -382,7 +382,7 @@ function get_wpsmiliestrans()
     return $output;
 }
 
-if (!kratos_option('g_gutenberg', false)) {
+if (!Charlotte_option('g_gutenberg', false)) {
     // 禁用 Gutenberg 编辑器
     add_filter('use_block_editor_for_post', '__return_false');
     add_filter('gutenberg_use_widgets_block_editor', '__return_false');
@@ -424,19 +424,19 @@ $new_meta_boxes =
         "description" => array(
             "name" => "seo_description",
             "std" => "",
-            "title" => __('描述', 'kratos')
+            "title" => __('描述', 'Charlotte')
         ),
         "keywords" => array(
             "name" => "seo_keywords",
             "std" => "",
-            "title" => __('关键词', 'kratos')
+            "title" => __('关键词', 'Charlotte')
         )
     );
 
 function seo_meta_boxes()
 {
     $post_types = get_post_types();
-    add_meta_box('meta-box-id', __('SEO 设置', 'kratos'), 'post_seo_callback', $post_types);
+    add_meta_box('meta-box-id', __('SEO 设置', 'Charlotte'), 'post_seo_callback', $post_types);
 }
 add_action('add_meta_boxes', 'seo_meta_boxes');
 
@@ -457,7 +457,7 @@ function post_seo_callback($post)
     echo '<input type="hidden" name="metaboxes_nonce" id="metaboxes_nonce" value="' . wp_create_nonce(plugin_basename(__FILE__)) . '" />';
 }
 
-if (kratos_option('g_image_filter', true)) {
+if (Charlotte_option('g_image_filter', true)) {
     add_action('admin_footer-post-new.php', 'fanly_mediapanel_lock_uploaded');
     add_action('admin_footer-post.php', 'fanly_mediapanel_lock_uploaded');
     function fanly_mediapanel_lock_uploaded()
@@ -488,16 +488,16 @@ function wpdocs_save_meta_box($post_id)
 add_action('save_post', 'wpdocs_save_meta_box');
 
 // 主页轮播
-function kratos_carousel()
+function Charlotte_carousel()
 {
-    if (kratos_option('g_carousel', false)) {
+    if (Charlotte_option('g_carousel', false)) {
         $slide = 0;
         $item = 0;
         $output = '<div id="indexCarousel" class="carousel article-carousel slide" data-ride="carousel"> <ol class="carousel-indicators">';
 
-        if (!empty(kratos_option('carousel_group'))) {
+        if (!empty(Charlotte_option('carousel_group'))) {
 
-            foreach (kratos_option('carousel_group') as $group_item) {
+            foreach (Charlotte_option('carousel_group') as $group_item) {
                 $active = null;
                 if ($slide == 0) {
                     $active = 'class="active"';
@@ -508,7 +508,7 @@ function kratos_carousel()
 
             $output .= '</ol><div class="carousel-inner">';
 
-            foreach (kratos_option('carousel_group') as $group_item) {
+            foreach (Charlotte_option('carousel_group') as $group_item) {
                 $active = null;
                 if ($item == 0) {
                     $active = 'active';

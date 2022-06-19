@@ -2,7 +2,7 @@
 
 /**
  * 站点相关函数
- * @author Seaton Jiang <hi@seatonjiang.com>
+ * @author Xmkjw63 <xmwlws@gmail.com>
  * @license GPL-3.0 License
  * @version 2022.01.26
  */
@@ -20,7 +20,7 @@ function title($title, $sep)
         $title = "{$title} {$sep} {$site_description}";
     }
     if ($paged >= 2 || $page >= 2) {
-        $title = "{$title} {$sep} " . sprintf(__('第 %s 页', 'kratos'), max($paged, $page));
+        $title = "{$title} {$sep} " . sprintf(__('第 %s 页', 'Charlotte'), max($paged, $page));
     }
     return $title;
 }
@@ -32,7 +32,7 @@ function keywords()
     global $post;
     $keywords = '';
     if (is_home()) {
-        $keywords = kratos_option('seo_keywords');
+        $keywords = Charlotte_option('seo_keywords');
     } elseif (is_single()) {
         $keywords = get_post_meta($post->ID, "seo_keywords_value", true);
         if ($keywords == '') {
@@ -45,7 +45,7 @@ function keywords()
     } elseif (is_page()) {
         $keywords = get_post_meta($post->ID, "seo_keywords_value", true);
         if ($keywords == '') {
-            $keywords = kratos_option('seo_keywords');
+            $keywords = Charlotte_option('seo_keywords');
         }
     } else {
         $keywords = single_tag_title('', false);
@@ -59,7 +59,7 @@ function description()
     global $post;
     $description = '';
     if (is_home()) {
-        $description = kratos_option('seo_description');
+        $description = Charlotte_option('seo_description');
     } elseif (is_single()) {
         $description = get_post_meta($post->ID, "seo_description_value", true);
         if ($description == '') {
@@ -75,7 +75,7 @@ function description()
     } elseif (is_page()) {
         $description = get_post_meta($post->ID, "seo_description_value", true);
         if ($description == '') {
-            $description = kratos_option('seo_description');
+            $description = Charlotte_option('seo_description');
         }
     }
     return trim(esc_attr(strip_tags($description)));
@@ -86,8 +86,8 @@ add_filter('robots_txt', function ($output, $public) {
     if ('0' == $public) {
         return "User-agent: *\nDisallow: /\n";
     } else {
-        if (!empty(kratos_option('seo_robots_fieldset')['seo_robots'])) {
-            $output = esc_attr(strip_tags(kratos_option('seo_robots_fieldset')['seo_robots']));
+        if (!empty(Charlotte_option('seo_robots_fieldset')['seo_robots'])) {
+            $output = esc_attr(strip_tags(Charlotte_option('seo_robots_fieldset')['seo_robots']));
         }
         return $output;
     }
@@ -96,7 +96,7 @@ add_filter('robots_txt', function ($output, $public) {
 // 哀悼黑白站点
 function mourning()
 {
-    if (is_home() && kratos_option('g_rip', false)) {
+    if (is_home() && Charlotte_option('g_rip', false)) {
         echo '<style type="text/css">html{filter: grayscale(100%);-webkit-filter: grayscale(100%);-moz-filter: grayscale(100%);-ms-filter: grayscale(100%);-o-filter: grayscale(100%);filter: progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);filter: gray;-webkit-filter: grayscale(1); } </style>';
     }
 }
@@ -117,7 +117,7 @@ function share_thumbnail_url()
         if (!empty($strResult[1])) {
             $img = $strResult[1][0];
         } else {
-            $img = kratos_option('seo_shareimg', ASSET_PATH . '/assets/img/default.jpg');
+            $img = Charlotte_option('seo_shareimg', ASSET_PATH . '/assets/img/default.jpg');
         }
     }
     return $img;
