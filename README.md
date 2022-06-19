@@ -24,4 +24,4 @@ Charlotte 使用 [GPL V3.0](https://github.com/xmkjw63/Charlotte/blob/master/LIC
 
 # 加入我们 Join Us
 
-如果你对本项目有兴趣，有PHP或前端开发能力（计划设计亦可），了解Wordpress程序架构，能遵守开源社区规则，请加QQ:2505012916进行咨询
+如果你对本项目有兴趣，有PHP或前端开发能力（计划设计亦可），了解Wordpress程序架构，能遵守开源社区规则，请加QQ:2505012916联系我
