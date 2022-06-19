@@ -21,3 +21,7 @@ Wow, such a kawaii wordpress theme
 # 注意
 
 Charlotte 使用 [GPL V3.0](https://github.com/xmkjw63/Charlotte/blob/master/LICENSE) 协议开源，请遵守此协议进行二次开发等
+
+# 加入我们 Join Us
+
+如果你对本项目有兴趣，有PHP或前端开发能力（计划设计亦可），了解Wordpress程序架构，能遵守开源社区规则，请加QQ:2505012916进行咨询
