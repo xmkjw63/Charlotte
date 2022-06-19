@@ -211,7 +211,7 @@ function pagelist($range = 5)
 // 文章评论
 function comment_scripts()
 {
-    wp_enqueue_script('comment', ASSET_PATH . '/assets/js/comments.min.js', array(), THEME_VERSION);
+    wp_enqueue_script('comment', ASSET_PATH . '/assets/js/comments.min.js', array(), Kratos_VERSION);
     wp_localize_script('comment', 'ajaxcomment', array(
         'ajax_url' => admin_url('admin-ajax.php'),
         'order' => get_option('comment_order'),

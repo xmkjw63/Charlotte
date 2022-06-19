@@ -39,7 +39,7 @@ function theme_autoload()
     if (!is_admin()) {
         // css
         wp_enqueue_style('bootstrap', ASSET_PATH . '/assets/css/bootstrap.min.css', array(), '4.5.0');
-        wp_enqueue_style('kicon', ASSET_PATH . '/assets/css/iconfont.min.css', array(), '4.1.4');
+        wp_enqueue_style('kicon', ASSET_PATH . '/assets/css/iconfont.min.css', array(), Kratos_VERSION);
         wp_enqueue_style('layer', ASSET_PATH . '/assets/css/layer.min.css', array(), '3.1.1');
         wp_enqueue_style('lightgallery', ASSET_PATH . '/assets/css/lightgallery.min.css', array(), '1.4.0');
         if (Charlotte_option('g_animate', false)) {
@@ -48,7 +48,7 @@ function theme_autoload()
         if (Charlotte_option('g_fontawesome', false)) {
             wp_enqueue_style('fontawesome', ASSET_PATH . '/assets/css/fontawesome.min.css', array(), '5.15.2');
         }
-        wp_enqueue_style('Charlotte', ASSET_PATH . '/style.css', array(), '4.1.4');
+        wp_enqueue_style('Charlotte', ASSET_PATH . '/style.css', array(), Kratos_VERSION);
         if (is_child_theme()) {
             wp_enqueue_style('Charlotte-child', get_stylesheet_uri(), array(), wp_get_theme()->get('Version'));
         }
@@ -95,9 +95,9 @@ function theme_autoload()
         wp_enqueue_script('jquery', ASSET_PATH . '/assets/js/jquery.min.js', array(), '3.4.1', false);
         wp_enqueue_script('bootstrap-bundle', ASSET_PATH . '/assets/js/bootstrap.bundle.min.js', array(), '4.5.0', true);
         wp_enqueue_script('layer', ASSET_PATH . '/assets/js/layer.min.js', array(), '3.1.1', true);
-        wp_enqueue_script('dplayer', ASSET_PATH . '/assets/js/DPlayer.min.js', array(), '4.1.4', true);
+        wp_enqueue_script('dplayer', ASSET_PATH . '/assets/js/DPlayer.min.js', array(), Kratos_VERSION, true);
         wp_enqueue_script('lightgallery', ASSET_PATH . '/assets/js/lightgallery.min.js', array(), '1.4.0', true);
-        wp_enqueue_script('Charlotte', ASSET_PATH . '/assets/js/kratos.js', array(), '4.1.4', true);
+        wp_enqueue_script('Charlotte', ASSET_PATH . '/assets/js/kratos.js', array(), Kratos_VERSION, true);
 
         $data = array(
             'site' => home_url(),
